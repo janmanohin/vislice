@@ -1,0 +1,31 @@
+% import model
+% rebase('base.html', title='Vislice')
+
+<div class="row">
+    <div class="col-6 my-auto bg-dark p-3">
+        <p style="color: white;">{{igra.pravilni_del_gesla()}}</p>
+        
+        <p style="color: white;">Nepravilne črke: {{igra.nepravilni_ugibi()}}</p>
+        
+        % if poskus == model.ZMAGA :
+            <h1>Zmaga!</h1>
+        % elif poskus == model.PORAZ :
+            <h1>Poraz!</h1>
+            <h5>Pravilni geslo je {{igra.geslo}}</h5>
+        % else:
+            <form action="/igra/" method="post">
+                <div class="form-floating mb-3">
+                    <input class="form-control" type="text" id="crka" name="crka" autofocus>
+                    <label for="crka">Za ugibanje pritisnite enter</label>
+                </div>
+            </form>
+        % end
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <a class="btn btn-outline-light mt-3 mb-3" href="/">Na začetno stran</a>
+        </div>
+    </div>
+    <div class="col-6">
+        <img src="/img/{{igra.stevilo_napak()}}.jpg">
+    </div>
+</div>
+</br>
