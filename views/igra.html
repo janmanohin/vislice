@@ -7,21 +7,28 @@
         
         <p style="color: white;">Nepravilne črke: {{igra.nepravilni_ugibi()}}</p>
         
-        % if poskus == model.ZMAGA :
-            <h1>Zmaga!</h1>
-        % elif poskus == model.PORAZ :
-            <h1>Poraz!</h1>
-            <h5>Pravilni geslo je {{igra.geslo}}</h5>
-        % else:
-            <form action="/igra/" method="post">
-                <div class="form-floating mb-3">
-                    <input class="form-control" type="text" id="crka" name="crka" autofocus>
-                    <label for="crka">Za ugibanje pritisnite enter</label>
-                </div>
-            </form>
-        % end
-        <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <a class="btn btn-outline-light mt-3 mb-3" href="/">Na začetno stran</a>
+        <div class="row">
+            <div class="col-4">
+
+                % if poskus == model.ZMAGA :
+                    <h3 class="mt-3" style="color: white;">Zmaga!</h3>
+                % elif poskus == model.PORAZ :
+                    <h3 style="color: white;">Poraz!</h3>
+                    <p style="color: white; font-size: smaller;">Geslo: {{igra.geslo}}</p>
+                % else:
+                    <form action="/igra/" method="post">
+                        <input class="form-control bg-dark mt-3 mb-3 w-100" style="color: white; box-shadow: none !important; border-color: white !important; border-radius: 0px;" type="text" id="crka" name="crka" placeholder="Vnesite črko" maxlength="1" autofocus>
+                    </form>
+                % end
+            </div>
+            <div class="col-4">
+                <a class="btn btn-outline-light mt-3 mb-3 w-100" style="border-radius: 0px" href="/">Na začetno stran</a>
+            </div>
+            <div class="col-4">
+                <form action="/nova_igra/" method="post">
+                    <button class="btn btn-outline-light mt-3 mb-3 w-100" style="border-radius: 0px" type="submit">Nova igra</button>
+                </form>
+            </div>
         </div>
     </div>
     <div class="col-6">
@@ -29,3 +36,13 @@
     </div>
 </div>
 </br>
+<script>
+$(function() {
+    var $id = $('#crka');
+    $id.keyup(function(e) {
+      if ($id.val().length >= 1) {
+        $(this.form).submit();
+      }
+    });
+  });
+</script>

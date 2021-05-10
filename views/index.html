@@ -1,14 +1,14 @@
 % rebase('base.html', title='Vislice')
 
-<h1>Vislice</h1>
-
-<blockquote>
-    Vislice so najboljša igra za preganjanje dolgčasa (poleg tetrisa).
-    <small>Študentje</small>
-</blockquote>
+<div class="container bg-dark text-white mt-3 p-3">
+    <h1>Vislice</h1>
+    <blockquote>
+        Vislice so najboljša igra za preganjanje dolgčasa (poleg tetrisa).
+        <small>Študentje</small>
+    </blockquote>
+    <form action="/nova_igra/" method="post">
+        <button class="btn btn-outline-light" style="border-radius: 0px" type="submit">Nova igra</button>
+    </form>
+</div>
 
 <img src="img/10.jpg" alt="obesanje">
-
-<form action="/nova_igra/" method="post">
-    <button type="submit">Nova igra</button>
-</form>
